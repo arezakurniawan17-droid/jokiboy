@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JokiBoy — Jasa Tugas Kuliah, 1 Hari Pasti Beres</title>
+<meta name="description" content="12 jenis tugas kuliah ditangani tim berpengalaman 7 tahun. Makalah, PPT, artikel, ujian, dan lainnya. Fast response, privasi terjaga. Chat WA sekarang." />
+<meta property="og:title" content="JokiBoy — Tugas Kuliah, 1 Hari Pasti Beres" />
+<meta property="og:description" content="8.000+ tugas selesai. Chat WA, ceritain tugasmu, terima hasilnya besok." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* =========================
+     TOKENS
+  ========================= */
+  :root {
+    --primary: #1A3FA5;
+    --primary-light: #EEF3FF;
+    --accent: #D4F040;
+    --black: #0A0A0A;
+    --body: #3D3D3D;
+    --muted: #888780;
+    --white: #FFFFFF;
+    --surface: #F7F7F5;
+    --border: #E8E8E4;
+    --wa-green: #25D366;
+    --wa-green-dark: #1ebd5a;
+
+    --shadow-card: 0 1px 4px rgba(0,0,0,0.06);
+    --shadow-hover: 0 8px 24px rgba(0,0,0,0.10);
+
+    --r-card: 16px;
+    --r-pill: 999px;
+    --r-input: 12px;
+
+    --max: 1180px;
+
+    /* Tweakable */
+    --kampus-speed: 50s;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3 {
+    color: var(--black);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* =========================
+     NAVBAR
+  ========================= */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--white);
+    transition: box-shadow .2s, border-color .2s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    border-bottom-color: var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--primary);
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .logo .emo { font-size: 22px; }
+  .nav-menu {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  .nav-menu a {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--body);
+    transition: color .15s;
+  }
+  .nav-menu a:hover { color: var(--primary); }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: var(--white);
+    padding: 11px 20px;
+    border-radius: var(--r-pill);
+    font-weight: 600;
+    font-size: 14px;
+    transition: transform .15s, background .15s;
+  }
+  .nav-cta:hover { background: #15348a; transform: translateY(-1px); }
+  .hamburger {
+    display: none;
+    width: 40px; height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--white);
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+  .hamburger span {
+    width: 18px; height: 2px;
+    background: var(--black);
+    border-radius: 2px;
+    transition: transform .2s, opacity .2s;
+  }
+  .hamburger.open span:nth-child(1){ transform: translateY(6px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){ opacity:0;}
+  .hamburger.open span:nth-child(3){ transform: translateY(-6px) rotate(-45deg);}
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px; right: 0;
+    width: 100%; max-width: 320px;
+    height: calc(100vh - 72px);
+    background: var(--white);
+    border-left: 1px solid var(--border);
+    padding: 24px;
+    z-index: 49;
+    transform: translateX(100%);
+    transition: transform .25s ease;
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu a {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--black);
+  }
+  .mobile-menu .nav-cta { display: inline-flex; margin-top: 20px; }
+
+  /* =========================
+     HERO
+  ========================= */
+  .hero {
+    position: relative;
+    padding: 80px 0 96px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(26,63,165,0.07) 1px, transparent 0) 0 0/28px 28px,
+      var(--white);
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,1) 70%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    background: rgba(26,63,165,0.04);
+    padding: 7px 14px;
+    border-radius: var(--r-pill);
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    animation: fadeUp .6s .05s both;
+  }
+  .badge-pill .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(212,240,64,0.3);
+  }
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 68px);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 22px;
+    animation: fadeUp .7s .12s both;
+  }
+  .hl {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+  }
+  .hl::after {
+    content: "";
+    position: absolute;
+    left: -4px; right: -4px;
+    bottom: 4px;
+    height: 38%;
+    background: var(--accent);
+    z-index: -1;
+    border-radius: 2px;
+  }
+  .hero p.lead {
+    font-size: 18px;
+    color: var(--body);
+    max-width: 520px;
+    margin-bottom: 36px;
+    animation: fadeUp .7s .2s both;
+  }
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    animation: fadeUp .7s .28s both;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--r-pill);
+    padding: 16px 28px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .2s, background .2s;
+    border: 1px solid transparent;
+    font-family: inherit;
+  }
+  .btn-wa {
+    background: var(--wa-green);
+    color: var(--white);
+    box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+    position: relative;
+  }
+  .btn-wa::before {
+    content: "";
+    position: absolute; inset: -3px;
+    border-radius: var(--r-pill);
+    border: 2px solid var(--wa-green);
+    opacity: .5;
+    animation: pulse 2.2s ease-out infinite;
+  }
+  .btn-wa:hover { background: var(--wa-green-dark); transform: translateY(-1px); }
+  .btn-ghost {
+    background: var(--white);
+    color: var(--body);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--black); color: var(--black); }
+  .btn-primary {
+    background: var(--primary);
+    color: var(--white);
+  }
+  .btn-primary:hover { background: #15348a; }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: .5; }
+    100% { transform: scale(1.15); opacity: 0; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .social-proof {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    color: var(--muted);
+    font-size: 13.5px;
+    animation: fadeUp .7s .35s both;
+  }
+  .social-proof span:not(:last-child)::after {
+    content: "·";
+    margin-left: 14px;
+    color: var(--border);
+  }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative;
+    height: 480px;
+    animation: fadeUp .9s .25s both;
+  }
+  .hv-card {
+    position: absolute;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow-hover);
+    padding: 18px 20px;
+  }
+  .hv-card-main {
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    text-align: left;
+  }
+  .hv-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .hv-bar .ic {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: var(--primary-light);
+    display: grid; place-items: center;
+    font-size: 18px;
+  }
+  .hv-title { font-weight: 700; color: var(--black); font-size: 14px; }
+  .hv-sub { font-size: 12px; color: var(--muted); }
+  .hv-progress {
+    height: 8px;
+    background: var(--surface);
+    border-radius: 99px;
+    overflow: hidden;
+    margin: 14px 0 8px;
+  }
+  .hv-progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--primary), #4a6dd6);
+    border-radius: 99px;
+    animation: fill 2.5s 0.6s ease-out forwards;
+  }
+  @keyframes fill { to { width: 92%; } }
+  .hv-meta {
+    display: flex; justify-content: space-between;
+    font-size: 12px;
+  }
+  .hv-meta strong { color: var(--primary); }
+  .hv-card-1 {
+    top: 18px; right: 0;
+    background: var(--accent);
+    border-color: transparent;
+    border-radius: 16px;
+    padding: 14px 18px;
+    color: var(--black);
+    font-weight: 700;
+    font-size: 14px;
+    transform: rotate(4deg);
+    animation: float 5s ease-in-out infinite;
+  }
+  .hv-card-2 {
+    bottom: 30px; left: 0;
+    padding: 14px 18px;
+    transform: rotate(-3deg);
+    animation: float 6s ease-in-out infinite -2s;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hv-card-2 .wa {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--wa-green);
+    color: white; font-size: 18px;
+    display: grid; place-items: center;
+  }
+  .hv-card-2 .txt { font-weight: 600; font-size: 13px; color: var(--black); }
+  .hv-card-2 .sub { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .hv-card-3 {
+    top: 70px; left: 24px;
+    padding: 10px 14px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    font-weight: 600; font-size: 12.5px;
+    transform: rotate(-6deg);
+    animation: float 5.5s ease-in-out infinite -1s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .hv-blob {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,63,165,0.10), transparent 65%);
+    z-index: -1;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0) rotate(var(--rot, 0)); }
+    50% { transform: translateY(-8px) rotate(var(--rot, 0)); }
+  }
+  .hv-card-1 { --rot: 4deg; }
+  .hv-card-2 { --rot: -3deg; }
+  .hv-card-3 { --rot: -6deg; }
+
+  /* =========================
+     PAIN
+  ========================= */
+  .pain {
+    background: var(--surface);
+    padding: 96px 0;
+    text-align: center;
+  }
+  .pain-quote {
+    font-size: clamp(22px, 2.4vw, 28px);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--body);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.45;
+    text-wrap: balance;
+  }
+  .pain-quote::before, .pain-quote::after {
+    content: '"';
+    color: var(--primary);
+    font-style: normal;
+    font-weight: 700;
+  }
+  .pain-chips {
+    margin-top: 36px;
+    display: flex; justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .chip {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 10px 18px;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--black);
+  }
+  .pain-bridge {
+    margin-top: 36px;
+    color: var(--muted);
+    font-size: 14.5px;
+  }
+  .pain-bridge strong { color: var(--primary); font-weight: 700; }
+
+  /* =========================
+     LAYANAN
+  ========================= */
+  .section {
+    padding: 100px 0;
+  }
+  .section-head {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .section-head h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-wrap: balance;
+  }
+  .section-head p {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .grid-svc {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .svc {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 22px 20px 20px;
+    transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    min-height: 184px;
+  }
+  .svc:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    background: var(--primary-light);
+    border-color: transparent;
+  }
+  .svc-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 18px;
+  }
+  .svc-emo { font-size: 30px; line-height: 1; }
+  .svc-badge {
+    background: var(--accent);
+    color: var(--black);
+    border-radius: var(--r-pill);
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .svc-name {
+    font-weight: 600;
+    font-size: 15.5px;
+    color: var(--black);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .svc-price {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .svc-link {
+    margin-top: auto;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex; gap: 4px;
+    align-items: center;
+  }
+  .svc-link .arr { transition: transform .2s; }
+  .svc:hover .svc-link .arr { transform: translateX(3px); }
+
+  /* =========================
+     KENAPA (dark blue)
+  ========================= */
+  .why {
+    background: var(--primary);
+    color: var(--white);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .why::before {
+    content: "";
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,240,64,0.10), transparent 70%);
+    top: -200px; right: -150px;
+  }
+  .why .section-head h2 { color: white; }
+  .why .section-head p { color: rgba(255,255,255,0.7); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    position: relative;
+  }
+  .why-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--r-card);
+    padding: 28px 22px;
+    transition: background .2s, transform .2s;
+    backdrop-filter: blur(4px);
+  }
+  .why-card:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-3px);
+  }
+  .why-emo { font-size: 32px; margin-bottom: 18px; }
+  .why-card h3 {
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .why-card p {
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* =========================
+     CARA ORDER
+  ========================= */
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    position: relative;
+    margin-bottom: 48px;
+  }
+  .step {
+    text-align: center;
+    padding: 24px;
+    position: relative;
+  }
+  .step-num {
+    width: 64px; height: 64px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-weight: 800;
+    font-size: 24px;
+    margin: 0 auto 20px;
+    box-shadow: 0 6px 20px rgba(26,63,165,0.25);
+  }
+  .step-emo {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  .step h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .step p {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+  .step-connector {
+    position: absolute;
+    top: 32px;
+    width: calc(100% - 64px);
+    height: 2px;
+    left: calc(50% + 32px);
+    background: linear-gradient(90deg, rgba(26,63,165,0.4), rgba(26,63,165,0));
+  }
+  .step:last-child .step-connector { display: none; }
+  .order-cta { text-align: center; }
+
+  /* =========================
+     PRICELIST
+  ========================= */
+  .pricelist { background: var(--surface); }
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .tab {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 10px 22px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--body);
+    cursor: pointer;
+    transition: all .15s;
+    font-family: inherit;
+  }
+  .tab:hover { border-color: var(--primary); color: var(--primary); }
+  .tab.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+  }
+  .tab-panel { display: none; max-width: 760px; margin: 0 auto; }
+  .tab-panel.active { display: block; }
+  .price-table {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    overflow: hidden;
+  }
+  .price-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    padding: 18px 24px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .price-row:nth-child(even) { background: #FBFBF9; }
+  .price-row:last-child { border-bottom: none; }
+  .price-row .name { font-weight: 600; color: var(--black); }
+  .price-row .price { color: var(--primary); font-weight: 700; text-align: right; }
+  .price-note {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13.5px;
+    margin-top: 20px;
+  }
+
+  /* =========================
+     TESTIMONI
+  ========================= */
+  .testi-wrap {
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  }
+  .testi-track {
+    display: flex;
+    gap: 18px;
+    animation: scroll 38s linear infinite;
+    width: max-content;
+  }
+  .testi-wrap:hover .testi-track { animation-play-state: paused; }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .testi-card {
+    width: 300px;
+    flex: 0 0 300px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    box-shadow: var(--shadow-card);
+    padding: 18px;
+  }
+  /* WA-style chat */
+  .wa-head {
+    display: flex; align-items: center; gap: 10px;
+    padding-bottom: 12px; margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .wa-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 14px;
+  }
+  .wa-name { font-weight: 600; font-size: 14px; color: var(--black); }
+  .wa-time { font-size: 11px; color: var(--muted); }
+  .wa-bubble {
+    background: #DCF8C6;
+    padding: 10px 12px;
+    border-radius: 10px 10px 0 10px;
+    font-size: 13.5px;
+    color: #111;
+    line-height: 1.45;
+    margin-bottom: 6px;
+    position: relative;
+    align-self: flex-end;
+    max-width: 90%;
+    margin-left: auto;
+  }
+  .wa-bubble .tick { color: #34B7F1; font-size: 12px; margin-left: 4px; }
+  .wa-bubble.in {
+    background: var(--surface);
+    border-radius: 10px 10px 10px 0;
+    margin-left: 0; margin-right: auto;
+    color: var(--body);
+  }
+  /* TF card */
+  .tf-card {
+    text-align: center;
+    padding: 22px 18px;
+  }
+  .tf-icon {
+    width: 56px; height: 56px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: grid; place-items: center;
+    font-size: 28px;
+  }
+  .tf-label {
+    font-weight: 700; color: var(--black);
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .tf-amount {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+    filter: blur(4px);
+    user-select: none;
+  }
+  .tf-amount.show { filter: none; }
+  .tf-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .tf-meta strong { color: var(--black); }
+
+  /* =========================
+     FAQ
+  ========================= */
+  .faq { background: var(--surface); }
+  .faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-q {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 24px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--black);
+    cursor: pointer;
+    text-align: left;
+  }
+  .faq-q .icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    display: grid; place-items: center;
+    font-size: 18px;
+    color: var(--primary);
+    transition: transform .3s, background .2s;
+    flex-shrink: 0;
+  }
+  .faq-item.open .faq-q .icon {
+    transform: rotate(45deg);
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+  }
+  .faq-a .inner {
+    padding: 0 8px 24px;
+    color: var(--body);
+    font-size: 15px;
+    line-height: 1.65;
+    max-width: 620px;
+  }
+  .faq-item.open .faq-a { max-height: 240px; }
+
+  /* =========================
+     CTA FINAL
+  ========================= */
+  .cta-final {
+    background: var(--black);
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-final::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 500px;
+    background: radial-gradient(ellipse, rgba(26,63,165,0.30), transparent 65%);
+    pointer-events: none;
+  }
+  .cta-final h2 {
+    color: white;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    margin-bottom: 20px;
+    position: relative;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  .cta-final h2 .hl::after { background: var(--accent); height: 30%; }
+  .cta-final p {
+    color: rgba(255,255,255,0.65);
+    font-size: 17px;
+    max-width: 540px;
+    margin: 0 auto 36px;
+    position: relative;
+  }
+  .cta-final .btn-wa {
+    position: relative;
+    font-size: 17px;
+    padding: 18px 32px;
+  }
+
+  /* =========================
+     FOOTER
+  ========================= */
+  .footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.6);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 56px 0 24px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer .logo {
+    color: white;
+    margin-bottom: 10px;
+  }
+  .footer-tag {
+    font-size: 14px;
+    max-width: 240px;
+  }
+  .footer h4 {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .footer ul { list-style: none; padding: 0; margin: 0; }
+  .footer li { padding: 4px 0; font-size: 14px; }
+  .footer a:hover { color: white; }
+  .footer .wa-num {
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /* =========================
+     FLOATING WA
+  ========================= */
+  .float-wa {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    z-index: 40;
+    width: 58px; height: 58px;
+    background: var(--wa-green);
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+    display: grid; place-items: center;
+    color: white;
+    font-size: 28px;
+    transition: transform .15s;
+  }
+  .float-wa::before {
+    content: "";
+    position: absolute; inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--wa-green);
+    animation: pulse 2.2s ease-out infinite;
+  }
+  .float-wa:hover { transform: scale(1.08); }
+
+  /* =========================
+     KAMPUS (marquee)
+  ========================= */
+  .kampus {
+    padding: 72px 0 80px;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .kampus-head {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .kampus-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 12px;
+  }
+  .kampus-head h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .kampus-head p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .kampus-head .num {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .kampus-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin: 32px 0 40px;
+    flex-wrap: wrap;
+  }
+  .kampus-stat {
+    text-align: center;
+  }
+  .kampus-stat .v {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .kampus-stat .l {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  .kampus-stat .v .accent { color: var(--primary); }
+
+  .kampus-marquee {
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+    padding: 2px 0;
+  }
+  .kampus-marquee + .kampus-marquee { margin-top: 14px; }
+  .km-track {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+    animation: kmscroll var(--kampus-speed) linear infinite;
+  }
+  .km-track.reverse { animation-direction: reverse; }
+  .kampus-marquee:hover .km-track { animation-play-state: paused; }
+  @keyframes kmscroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .km-pill {
+    flex-shrink: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--black);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color .15s, color .15s, background .15s;
+  }
+  .km-pill:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-light);
+  }
+  .km-pill .seal {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: grid; place-items: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  /* =========================
+     TWEAKABLE STATES
+  ========================= */
+  body.hl-underline .hl::after {
+    height: 4px;
+    bottom: -2px;
+    border-radius: 99px;
+  }
+  body.hl-none .hl::after { display: none; }
+  body.no-pulse .btn-wa::before,
+  body.no-pulse .float-wa::before { display: none; }
+  body.bg-grid .hero {
+    background:
+      linear-gradient(rgba(26,63,165,0.06) 1px, transparent 1px) 0 0 / 32px 32px,
+      linear-gradient(90deg, rgba(26,63,165,0.06) 1px, transparent 1px) 0 0 / 32px 32px,
+      var(--white);
+  }
+  body.bg-clean .hero { background: var(--white); }
+  body.bg-clean .hero::before { display: none; }
+
+  /* =========================
+     RESPONSIVE
+  ========================= */
+  @media (max-width: 1024px) {
+    .grid-svc { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { height: 380px; max-width: 460px; margin: 0 auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    .nav-menu { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: block; }
+    .nav-cta.desktop-only { display: none; }
+    .hero { padding: 48px 0 64px; }
+    .hero h1 { font-size: 40px; }
+    .hero p.lead { font-size: 16px; }
+    .section, .pain, .why { padding: 64px 0; }
+    .cta-final { padding: 80px 0; }
+    .grid-svc { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; gap: 12px; }
+    .step-connector { display: none; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .cta-row .btn { width: 100%; justify-content: center; }
+    .price-row { padding: 14px 16px; }
+    .hero-visual { height: 340px; }
+    .hv-card-main { width: 240px; }
+    .float-wa { width: 52px; height: 52px; bottom: 18px; right: 18px; font-size: 24px; }
+    .kampus { padding: 56px 0; }
+    .kampus-stats { gap: 28px; }
+  }
+</style>
+</head>
+<body data-screen-label="JokiBoy Landing Page">
+
+<!-- ========== NAVBAR ========== -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo" aria-label="JokiBoy"><span class="emo">📚</span> JokiBoy</a>
+    <div class="nav-menu">
+      <a href="#layanan">Layanan</a>
+      <a href="#harga">Harga</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="https://wa.me/6282178880633?text=Halo%20JokiBoy!%20Saya%20mau%20konsultasi%20tugas%20kuliah%20saya." class="nav-cta desktop-only" target="_blank" rel="noopener">Order Sekarang →</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#layanan">Layanan</a>
+  <a href="#harga">Harga</a>
+  <a href="#testimoni">Testimoni</a>
+  <a href="#faq">FAQ</a>
+  <a href="https://wa.me/6282178880633?text=Halo%20JokiBoy!%20Saya%20mau%20konsultasi%20tugas%20kuliah%20saya." class="nav-cta" target="_blank" rel="noopener">Order Sekarang →</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge-pill"><span class="dot"></span> Dipercaya 8.000+ Mahasiswa</div>
+      <h1>Tugas Kuliah, <span class="hl">1 Hari</span> Pasti Beres</h1>
+      <p class="lead">Chat WA sekarang, ceritakan tugasmu, dan terima hasilnya besok. Sesimpel itu.</p>
+      <div class="cta-row">
+        <a href="https://wa.me/6282178880633?text=Halo%20JokiBoy!%20Saya%20mau%20konsultasi%20tugas%20kuliah%20saya." target="_blank" rel="noopener" class="btn btn-wa" data-track="lead-hero">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zM6.597 20.13c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          Konsultasi Gratis via WA
+        </a>
+        <a href="#layanan" class="btn btn-ghost">Lihat Layanan ↓</a>
+      </div>
+      <div class="social-proof">
+        <span>8.000+ tugas selesai</span>
+        <span>Selesai 1 hari</span>
+        <span>Semua jurusan</span>
+        <span>100% privasi terjaga</span>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hv-blob"></div>
+
+      <div class="hv-card hv-card-3">
+        <span style="font-size:14px">⚡</span> Estimasi 18 jam
+      </div>
+
+      <div class="hv-card hv-card-1">
+        ✓ Selesai 1 Hari
+      </div>
+
+      <div class="hv-card hv-card-main">
+        <div class="hv-bar">
+          <div class="ic">📄</div>
+          <div>
+            <div class="hv-title">Makalah Manajemen</div>
+            <div class="hv-sub">15 hal · Citation APA</div>
+          </div>
+        </div>
+        <div style="font-size:12.5px; color:var(--muted)">Progress pengerjaan</div>
+        <div class="hv-progress"><div class="hv-progress-bar"></div></div>
+        <div class="hv-meta">
+          <span style="color:var(--muted)">Status</span>
+          <strong>Hampir selesai · 92%</strong>
+        </div>
+      </div>
+
+      <div class="hv-card hv-card-2">
+        <div class="wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
+        </div>
+        <div>
+          <div class="txt">Tugas siap besok</div>
+          <div class="sub">Dikirim via WhatsApp</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========== KAMPUS ========== -->
+<section class="kampus" id="kampus" data-screen-label="Kampus">
+  <div class="container">
+    <div class="kampus-head">
+      <span class="kampus-eyebrow">Trusted by Students</span>
+      <h2>Sudah Bantu Mahasiswa dari <span class="num" id="kampusCountInline">50+</span> Kampus se-Indonesia</h2>
+      <p>Dari PTN, PTS, hingga PTKIN — kami sudah berpengalaman dengan format dan standar berbagai kampus.</p>
+      <div class="kampus-stats">
+        <div class="kampus-stat">
+          <div class="v"><span class="accent">50+</span></div>
+          <div class="l">Kampus</div>
+        </div>
+        <div class="kampus-stat">
+          <div class="v">34</div>
+          <div class="l">Provinsi</div>
+        </div>
+        <div class="kampus-stat">
+          <div class="v">8.000<span style="color:var(--primary)">+</span></div>
+          <div class="l">Tugas selesai</div>
+        </div>
+        <div class="kampus-stat">
+          <div class="v">7 thn</div>
+          <div class="l">Pengalaman</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kampus-marquee">
+      <div class="km-track" id="kmTrack1"></div>
+    </div>
+    <div class="kampus-marquee">
+      <div class="km-track reverse" id="kmTrack2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PAIN ========== -->
+<section class="pain" data-screen-label="Pain Point">
+  <div class="container">
+    <p class="pain-quote">Kadang bukan soal males. Tugas datang barengan, prioritas bentrok, dan waktunya selalu ga cukup.</p>
+    <div class="pain-chips">
+      <span class="chip">📚 Tugas numpuk</span>
+      <span class="chip">⏰ Deadline mepet</span>
+      <span class="chip">😩 Dosen killer</span>
+    </div>
+    <p class="pain-bridge">Makanya <strong>JokiBoy</strong> ada.</p>
+  </div>
+</section>
+
+<!-- ========== LAYANAN ========== -->
+<section class="section" id="layanan" data-screen-label="Layanan">
+  <div class="container">
+    <div class="section-head">
+      <h2>12 Jenis Tugas, Semua Bisa Kami Handle</h2>
+      <p>Klik layanan untuk lihat detail, harga, dan waktu pengerjaan.</p>
+    </div>
+    <div class="grid-svc" id="gridSvc"></div>
+  </div>
+</section>
+
+<!-- ========== KENAPA ========== -->
+<section class="why" data-screen-label="Kenapa JokiBoy">
+  <div class="container">
+    <div class="section-head">
+      <h2>Kenapa Ribuan Mahasiswa Pilih JokiBoy?</h2>
+      <p>4 alasan kenapa mahasiswa balik lagi & rekomendasiin ke temannya.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-emo">⚡</div>
+        <h3>Selesai 1 Hari</h3>
+        <p>Bukan janji, sudah terbukti di 8.000+ tugas.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-emo">🔒</div>
+        <h3>Privasi Mutlak</h3>
+        <p>Tidak ada jejak, tidak ada yang tahu.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-emo">💬</div>
+        <h3>Fast Response</h3>
+        <p>Chat sekarang, langsung direspon — bukan besok.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-emo">🎯</div>
+        <h3>Semua Jurusan</h3>
+        <p>Apapun mata kuliahnya, kita bisa handle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CARA ORDER ========== -->
+<section class="section" data-screen-label="Cara Order">
+  <div class="container">
+    <div class="section-head">
+      <h2>Order Semudah Pesan GoFood</h2>
+      <p>3 langkah dari chat sampai file kelar di WA kamu.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-emo">💬</div>
+        <h3>Chat WA</h3>
+        <p>Ceritain tugasmu, deadline, dan jurusan kamu.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-emo">💰</div>
+        <h3>Deal & Bayar</h3>
+        <p>Sepakat harga, transfer, langsung dikerjain.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-emo">✅</div>
+        <h3>Terima Hasil</h3>
+        <p>File masuk WA kamu sebelum deadline.</p>
+      </div>
+    </div>
+    <div class="order-cta">
+      <a href="https://wa.me/6282178880633?text=Halo%20JokiBoy!%20Saya%20mau%20konsultasi%20tugas%20kuliah%20saya." target="_blank" rel="noopener" class="btn btn-wa" data-track="lead-order">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
+        Mulai Order via WA
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICELIST ========== -->
+<section class="section pricelist" id="harga" data-screen-label="Pricelist">
+  <div class="container">
+    <div class="section-head">
+      <h2>Harga Transparan, Sesuai Kantong Mahasiswa</h2>
+      <p>Harga mulai. Final tergantung scope & deadline — bisa lebih murah kalau tugas lebih sederhana.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="harian" role="tab">Tugas Harian</button>
+      <button class="tab" data-tab="riset" role="tab">Riset & Laporan</button>
+      <button class="tab" data-tab="kreatif" role="tab">Kreatif & Teknis</button>
+    </div>
+
+    <div class="tab-panel active" data-panel="harian">
+      <div class="price-table">
+        <div class="price-row"><span class="name">Makalah & Paper</span><span class="price">Rp 95.000 – 195.000</span></div>
+        <div class="price-row"><span class="name">Review & Artikel Jurnal</span><span class="price">Rp 150.000 – 225.000</span></div>
+        <div class="price-row"><span class="name">PPT & Presentasi</span><span class="price">Rp 75.000 – 200.000</span></div>
+        <div class="price-row"><span class="name">Ujian & Take Home</span><span class="price">Rp 100.000 – 400.000</span></div>
+        <div class="price-row"><span class="name">Resume & Rangkuman</span><span class="price">Rp 75.000 – 150.000</span></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="riset">
+      <div class="price-table">
+        <div class="price-row"><span class="name">Tugas Metopen</span><span class="price">Rp 300.000 – 500.000</span></div>
+        <div class="price-row"><span class="name">Laporan KKN/PKL/Magang</span><span class="price">Rp 150.000 – 250.000</span></div>
+        <div class="price-row"><span class="name">Cek Turnitin</span><span class="price">Rp 15.000</span></div>
+        <div class="price-row"><span class="name">Parafrase</span><span class="price">Rp 150.000 – 350.000</span></div>
+        <div class="price-row"><span class="name">Modul, LKPD & RPP</span><span class="price">Rp 200.000 – 600.000</span></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="kreatif">
+      <div class="price-table">
+        <div class="price-row"><span class="name">Desain & Infografis</span><span class="price">Rp 75.000 – 200.000</span></div>
+        <div class="price-row"><span class="name">Editing Video & Animasi</span><span class="price">Rp 150.000 – 500.000</span></div>
+        <div class="price-row"><span class="name">Ketik & Tulis Tangan</span><span class="price">Rp 50.000 – 150.000</span></div>
+      </div>
+    </div>
+
+    <p class="price-note">💬 Harga final tergantung scope & deadline. Konsultasi gratis via WA.</p>
+  </div>
+</section>
+
+<!-- ========== TESTIMONI ========== -->
+<section class="section" id="testimoni" data-screen-label="Testimoni">
+  <div class="container">
+    <div class="section-head">
+      <h2>Kata Mereka yang Sudah Buktiin Sendiri</h2>
+      <p>Cuplikan obrolan WA & bukti TF dari klien (nama & nominal disamarkan demi privasi).</p>
+    </div>
+  </div>
+  <div class="testi-wrap">
+    <div class="testi-track" id="testiTrack"></div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="section faq" id="faq" data-screen-label="FAQ">
+  <div class="container">
+    <div class="section-head">
+      <h2>Pertanyaan yang Sering Ditanyain</h2>
+      <p>Belum kejawab? Tanya langsung via WA — admin standby 08.00–23.00 WIB.</p>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ========== CTA FINAL ========== -->
+<section class="cta-final" data-screen-label="CTA Final">
+  <div class="container">
+    <h2>Kamu fokus kuliah.<br/>Biar <span class="hl">kita yang urus</span> tugasnya.</h2>
+    <p>Tidak ada di list layanan? Tetap chat — hampir semua tugas bisa kami kerjain.</p>
+    <a href="https://wa.me/6282178880633?text=Halo%20JokiBoy!%20Saya%20mau%20konsultasi%20tugas%20kuliah%20saya." target="_blank" rel="noopener" class="btn btn-wa" data-track="lead-final">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
+      Konsultasi Gratis via WA
+    </a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">📚 JokiBoy</div>
+        <p class="footer-tag">Tugas beres, nilai aman. 7 tahun dipercaya 8.000+ mahasiswa.</p>
+      </div>
+      <div>
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#harga">Harga</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li>📱 <a href="https://wa.me/6282178880633" class="wa-num" target="_blank" rel="noopener">082178880633</a></li>
+          <li>📍 Lampung, Melayani Seluruh Indonesia</li>
+          <li>🕐 Operasional 08.00–23.00 WIB</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 JokiBoy · Privasi terjaga · Data tidak pernah dibagikan</div>
+  </div>
+</footer>
+
+<!-- Floating WA -->
+<a href="https://wa.me/6282178880633?text=Halo%20JokiBoy!%20Saya%20mau%20konsultasi%20tugas%20kuliah%20saya." target="_blank" rel="noopener" class="float-wa" aria-label="Chat WhatsApp" data-track="lead-float">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zM6.597 20.13c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<script>
+  /* ---------- NAV ---------- */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  const ham = document.getElementById('hamburger');
+  const mm = document.getElementById('mobileMenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mm.classList.toggle('open');
+  });
+  mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    ham.classList.remove('open'); mm.classList.remove('open');
+  }));
+
+  /* ---------- SERVICES DATA ---------- */
+  const services = [
+    { emo: '📄', name: 'Makalah & Paper',          badge: '1 Hari',       price: 'Mulai Rp 95.000',   slug: 'makalah-paper' },
+    { emo: '🔬', name: 'Review & Artikel Jurnal',  badge: '1–3 Hari',     price: 'Mulai Rp 150.000',  slug: 'artikel-review-jurnal' },
+    { emo: '🎯', name: 'PPT & Presentasi',         badge: '1 Hari',       price: 'Mulai Rp 75.000',   slug: 'ppt-presentasi' },
+    { emo: '✍️', name: 'Ujian & Take Home',        badge: '1 Hari',       price: 'Mulai Rp 100.000',  slug: 'ujian-take-home' },
+    { emo: '📊', name: 'Tugas Metopen',            badge: '2–5 Hari',     price: 'Mulai Rp 300.000',  slug: 'tugas-metopen' },
+    { emo: '📋', name: 'Laporan KKN/PKL/Magang',   badge: '2–3 Hari',     price: 'Mulai Rp 150.000',  slug: 'laporan-kkn-pkl-magang' },
+    { emo: '🔍', name: 'Cek Turnitin & Parafrase', badge: '1 Jam',        price: 'Mulai Rp 15.000',   slug: 'cek-turnitin-parafrase' },
+    { emo: '🎨', name: 'Desain & Infografis',      badge: '1–2 Hari',     price: 'Mulai Rp 75.000',   slug: 'desain-infografis' },
+    { emo: '⌨️', name: 'Ketik & Tulis Tangan',     badge: '1 Hari',       price: 'Mulai Rp 50.000',   slug: 'ketik-tulis-tangan' },
+    { emo: '📚', name: 'Modul, LKPD & RPP',        badge: '2–4 Hari',     price: 'Mulai Rp 200.000',  slug: 'modul-lkpd-rpp' },
+    { emo: '📝', name: 'Resume & Rangkuman',       badge: '1 Hari',       price: 'Mulai Rp 75.000',   slug: 'resume-rangkuman' },
+    { emo: '🎬', name: 'Editing Video & Animasi',  badge: '1–2 Hari',     price: 'Mulai Rp 150.000',  slug: 'editing-video-animasi' },
+    { emo: '🙋', name: 'Tugas Lainnya',            badge: 'Menyesuaikan', price: 'Hubungi Kami',      slug: 'tugas-lainnya' }
+  ];
+  const waBase = 'https://wa.me/6282178880633?text=';
+  const waMsg = (n) => waBase + encodeURIComponent(`Halo JokiBoy! Saya mau order ${n}. Boleh minta info harga?`);
+
+  const grid = document.getElementById('gridSvc');
+  grid.innerHTML = services.map(s => `
+    <a class="svc" href="${waMsg(s.name)}" target="_blank" rel="noopener" data-track="lead-card">
+      <div class="svc-head">
+        <span class="svc-emo">${s.emo}</span>
+        <span class="svc-badge">${s.badge}</span>
+      </div>
+      <div class="svc-name">${s.name}</div>
+      <div class="svc-price">${s.price}</div>
+      <span class="svc-link">Lihat Detail <span class="arr">→</span></span>
+    </a>
+  `).join('');
+
+  /* ---------- TABS ---------- */
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const t = btn.dataset.tab;
+      document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b === btn));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.dataset.panel === t));
+    });
+  });
+
+  /* ---------- FAQ ---------- */
+  const faqs = [
+    {
+      q: 'Apakah data saya aman dan tidak ketahuan?',
+      a: 'Ya, keamanan dan privasi adalah prioritas utama kami. Tidak ada data kamu yang pernah kami bagikan ke siapapun. Sudah 7 tahun kami menjaga kepercayaan ribuan mahasiswa.'
+    },
+    {
+      q: 'Selesai dalam 1 hari — beneran bisa?',
+      a: 'Iya, untuk sebagian besar tugas. Makalah, PPT, resume, ketik, dan ujian take home rata-rata selesai dalam 1 hari. Untuk tugas kompleks seperti metopen atau laporan, kami akan konfirmasi timeline di awal.'
+    },
+    {
+      q: 'Pembayaran di awal? Bagaimana jika tidak sesuai?',
+      a: 'Pembayaran dilakukan setelah deal harga disepakati. Jika hasil tidak sesuai brief awal, kami siap revisi sampai kamu puas.'
+    },
+    {
+      q: 'Melayani semua jurusan dan kampus?',
+      a: 'Ya, semua jurusan dan kampus di seluruh Indonesia — dari hukum, ekonomi, kesehatan, teknik, pendidikan, sampai jurusan lainnya. Sudah berpengalaman dengan format berbagai kampus.'
+    },
+    {
+      q: 'Bagaimana kalau deadline mendadak?',
+      a: 'Langsung chat WA dan ceritakan situasinya. Kami konfirmasi jujur di awal — bisa atau tidak. Untuk kasus urgent kami prioritaskan dan usahakan semaksimal mungkin.'
+    }
+  ];
+  const faqList = document.getElementById('faqList');
+  faqList.innerHTML = faqs.map((f, i) => `
+    <div class="faq-item" data-i="${i}">
+      <button class="faq-q" aria-expanded="false">
+        <span>${f.q}</span>
+        <span class="icon">+</span>
+      </button>
+      <div class="faq-a"><div class="inner">${f.a}</div></div>
+    </div>
+  `).join('');
+  faqList.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const open = item.classList.contains('open');
+      faqList.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    });
+  });
+
+  /* ---------- TESTIMONI ---------- */
+  const testis = [
+    { type: 'wa', name: 'Rini A.', initial: 'R', time: 'Kemarin', msg: 'Makalahnya udah aku submit. Dosen ngasih nilai B+ 🙌 Makasih banyakk JokiBoy!' },
+    { type: 'tf', label: 'Bukti Transfer ✓', amount: 'Rp 175.000', meta: 'BCA · 22 Mei 2026 · 14:32' },
+    { type: 'wa', name: 'Dimas K.', initial: 'D', time: '2 hari lalu', msg: 'PPT-nya kerennn, presentasi lancar, dosen muji designnya 🔥 Order lagi pasti deh' },
+    { type: 'tf', label: 'Bukti Transfer ✓', amount: 'Rp 95.000',  meta: 'Dana · 21 Mei 2026 · 09:15' },
+    { type: 'wa', name: 'Sari W.',  initial: 'S', time: '3 hari lalu', msg: 'Tugas metopen aku selesai 4 hari sesuai janji. Datanya rapi, analisisnya valid. Worth it bgt 💯' },
+    { type: 'tf', label: 'Bukti Transfer ✓', amount: 'Rp 320.000', meta: 'BSI · 19 Mei 2026 · 20:08' },
+    { type: 'wa', name: 'Fajar R.', initial: 'F', time: '5 hari lalu', msg: 'Ujian take home jam 9 deadline jam 23.59, daftarkan jam 14, selesai jam 19. Mantap responnya cepet bgt 🙏' },
+    { type: 'tf', label: 'Bukti Transfer ✓', amount: 'Rp 250.000', meta: 'BCA · 17 Mei 2026 · 11:24' }
+  ];
+  const t = document.getElementById('testiTrack');
+  const renderTesti = (x) => x.type === 'wa' ? `
+    <div class="testi-card">
+      <div class="wa-head">
+        <div class="wa-avatar">${x.initial}</div>
+        <div>
+          <div class="wa-name">${x.name}</div>
+          <div class="wa-time">${x.time}</div>
+        </div>
+      </div>
+      <div class="wa-bubble in">Tugasnya sudah selesai ya kak, file kami kirim 📎</div>
+      <div class="wa-bubble">${x.msg} <span class="tick">✓✓</span></div>
+    </div>
+  ` : `
+    <div class="testi-card tf-card">
+      <div class="tf-icon">💸</div>
+      <div class="tf-label">${x.label}</div>
+      <div class="tf-amount">${x.amount}</div>
+      <div class="tf-meta">${x.meta}</div>
+    </div>
+  `;
+  // duplicate for seamless scroll
+  t.innerHTML = [...testis, ...testis].map(renderTesti).join('');
+
+  /* ---------- KAMPUS DATA ---------- */
+  const KAMPUS_ALL = [
+    // PTN besar
+    { n: 'Universitas Indonesia',          s: 'UI' },
+    { n: 'Universitas Gadjah Mada',        s: 'UGM' },
+    { n: 'Institut Teknologi Bandung',     s: 'ITB' },
+    { n: 'Institut Teknologi Sepuluh Nopember', s: 'ITS' },
+    { n: 'Institut Pertanian Bogor',       s: 'IPB' },
+    { n: 'Universitas Airlangga',          s: 'UNAIR' },
+    { n: 'Universitas Padjadjaran',        s: 'UNPAD' },
+    { n: 'Universitas Diponegoro',         s: 'UNDIP' },
+    { n: 'Universitas Brawijaya',          s: 'UB' },
+    { n: 'Universitas Sebelas Maret',      s: 'UNS' },
+    { n: 'Universitas Hasanuddin',         s: 'UNHAS' },
+    { n: 'Universitas Sumatera Utara',     s: 'USU' },
+    { n: 'Universitas Lampung',            s: 'UNILA' },
+    { n: 'Universitas Sriwijaya',          s: 'UNSRI' },
+    { n: 'Universitas Riau',               s: 'UNRI' },
+    { n: 'Universitas Andalas',            s: 'UNAND' },
+    { n: 'Universitas Tanjungpura',        s: 'UNTAN' },
+    { n: 'Universitas Mulawarman',         s: 'UNMUL' },
+    { n: 'Universitas Sam Ratulangi',      s: 'UNSRAT' },
+    { n: 'Universitas Udayana',            s: 'UNUD' },
+    { n: 'Universitas Mataram',            s: 'UNRAM' },
+    { n: 'Universitas Cenderawasih',       s: 'UNCEN' },
+    { n: 'Universitas Pattimura',          s: 'UNPATTI' },
+    // LPTK / Pendidikan
+    { n: 'Universitas Pendidikan Indonesia', s: 'UPI' },
+    { n: 'Universitas Negeri Yogyakarta',  s: 'UNY' },
+    { n: 'Universitas Negeri Jakarta',     s: 'UNJ' },
+    { n: 'Universitas Negeri Semarang',    s: 'UNNES' },
+    { n: 'Universitas Negeri Malang',      s: 'UM' },
+    { n: 'Universitas Negeri Surabaya',    s: 'UNESA' },
+    { n: 'Universitas Negeri Makassar',    s: 'UNM' },
+    { n: 'Universitas Negeri Medan',       s: 'UNIMED' },
+    { n: 'Universitas Negeri Padang',      s: 'UNP' },
+    // UPN
+    { n: 'UPN Veteran Jakarta',            s: 'UPNVJ' },
+    { n: 'UPN Veteran Yogyakarta',         s: 'UPNYK' },
+    // Muhammadiyah & Islam
+    { n: 'Universitas Muhammadiyah Surakarta', s: 'UMS' },
+    { n: 'Universitas Muhammadiyah Malang',    s: 'UMM' },
+    { n: 'Universitas Muhammadiyah Yogyakarta', s: 'UMY' },
+    { n: 'Universitas Muhammadiyah Jakarta',   s: 'UMJ' },
+    { n: 'Universitas Muhammadiyah Sumut',     s: 'UMSU' },
+    { n: 'Universitas Islam Indonesia',        s: 'UII' },
+    // PTKIN
+    { n: 'UIN Syarif Hidayatullah Jakarta', s: 'UIN JKT' },
+    { n: 'UIN Sunan Kalijaga Yogyakarta',   s: 'UIN YK' },
+    { n: 'UIN Sunan Gunung Djati Bandung',  s: 'UIN BDG' },
+    { n: 'UIN Maulana Malik Ibrahim Malang',s: 'UIN MLG' },
+    { n: 'UIN Raden Intan Lampung',         s: 'UIN RIL' },
+    // PTS unggulan
+    { n: 'Universitas Bina Nusantara',      s: 'BINUS' },
+    { n: 'Universitas Pelita Harapan',      s: 'UPH' },
+    { n: 'Universitas Tarumanagara',        s: 'UNTAR' },
+    { n: 'Universitas Mercu Buana',         s: 'UMB' },
+    { n: 'Universitas Multimedia Nusantara',s: 'UMN' },
+    { n: 'Universitas Atma Jaya Yogyakarta',s: 'UAJY' },
+    { n: 'Universitas Pancasila',           s: 'UP' },
+    { n: 'Universitas Trisakti',            s: 'USAKTI' },
+    { n: 'Telkom University',               s: 'TEL-U' },
+    { n: 'President University',            s: 'PresUniv' },
+    // PT Vokasi & Terbuka
+    { n: 'Universitas Terbuka',             s: 'UT' },
+    { n: 'Politeknik Negeri Jakarta',       s: 'PNJ' },
+    { n: 'Politeknik Negeri Bandung',       s: 'Polban' },
+    { n: 'PKN STAN',                        s: 'STAN' }
+  ];
+
+  const km1 = document.getElementById('kmTrack1');
+  const km2 = document.getElementById('kmTrack2');
+  function renderKampus(count) {
+    const list = KAMPUS_ALL.slice(0, count);
+    const half = Math.ceil(list.length / 2);
+    const a = list.slice(0, half);
+    const b = list.slice(half);
+    const pill = (k) => `<span class="km-pill"><span class="seal">${k.s.charAt(0)}</span>${k.n}</span>`;
+    km1.innerHTML = [...a, ...a].map(pill).join('');
+    km2.innerHTML = [...b, ...b].map(pill).join('');
+    const inline = document.getElementById('kampusCountInline');
+    if (inline) inline.textContent = `${list.length}+`;
+  }
+  renderKampus(50);
+  window.__renderKampus = renderKampus;
+
+  /* ---------- LEAD TRACK (placeholder for Meta Pixel) ---------- */
+  document.querySelectorAll('[data-track="lead-hero"], [data-track="lead-order"], [data-track="lead-final"], [data-track="lead-card"], [data-track="lead-float"]').forEach(el => {
+    el.addEventListener('click', () => {
+      if (window.fbq) window.fbq('track', 'Lead', { source: el.dataset.track });
+    });
+  });
+</script>
+
+<!-- ============ TWEAKS PANEL ============ -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<div id="tweaks-root"></div>
+
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "primaryColor": "#1A3FA5",
+    "accentColor": "#D4F040",
+    "showKampus": true,
+    "kampusCount": 50,
+    "kampusSpeed": 50,
+    "headlineHighlight": "lime",
+    "showFloatWA": true,
+    "pulseAnimation": true,
+    "bgPattern": "dots"
+  }/*EDITMODE-END*/;
+
+  // Curated color sets
+  const PRIMARY_OPTIONS = ['#1A3FA5', '#5B3FE4', '#0E7C5A', '#A0202C'];
+  const ACCENT_OPTIONS  = ['#D4F040', '#FFD60A', '#FF6B9D', '#FF8A3D'];
+
+  function applyTweaks(t) {
+    const r = document.documentElement.style;
+    r.setProperty('--primary', t.primaryColor);
+    r.setProperty('--accent', t.accentColor);
+    r.setProperty('--kampus-speed', t.kampusSpeed + 's');
+
+    // primary-light is a 8% tint of primary
+    const tint = hexTint(t.primaryColor, 0.92);
+    r.setProperty('--primary-light', tint);
+
+    // kampus section show/hide
+    const kampus = document.getElementById('kampus');
+    if (kampus) kampus.style.display = t.showKampus ? '' : 'none';
+
+    // float WA show/hide
+    const fwa = document.querySelector('.float-wa');
+    if (fwa) fwa.style.display = t.showFloatWA ? '' : 'none';
+
+    // pulse animation
+    document.body.classList.toggle('no-pulse', !t.pulseAnimation);
+
+    // headline highlight style
+    document.body.classList.remove('hl-lime', 'hl-underline', 'hl-none');
+    document.body.classList.add('hl-' + t.headlineHighlight);
+
+    // bg pattern on hero
+    document.body.classList.remove('bg-dots', 'bg-grid', 'bg-clean');
+    document.body.classList.add('bg-' + t.bgPattern);
+
+    // kampus count re-render
+    if (window.__renderKampus) window.__renderKampus(t.kampusCount);
+  }
+
+  function hexTint(hex, mix) {
+    // mix 0..1 toward white
+    const h = hex.replace('#','');
+    const r = parseInt(h.substr(0,2), 16);
+    const g = parseInt(h.substr(2,2), 16);
+    const b = parseInt(h.substr(4,2), 16);
+    const nr = Math.round(r + (255 - r) * mix);
+    const ng = Math.round(g + (255 - g) * mix);
+    const nb = Math.round(b + (255 - b) * mix);
+    return `rgb(${nr}, ${ng}, ${nb})`;
+  }
+
+  function App() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+    React.useEffect(() => { applyTweaks(t); }, [t]);
+
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Kampus Section" />
+        <TweakToggle label="Tampilkan section kampus" value={t.showKampus}
+          onChange={(v) => setTweak('showKampus', v)} />
+        <TweakSlider label="Jumlah kampus" value={t.kampusCount} min={30} max={58} unit=""
+          onChange={(v) => setTweak('kampusCount', v)} />
+        <TweakSlider label="Kecepatan slide" value={t.kampusSpeed} min={20} max={100} unit="s"
+          onChange={(v) => setTweak('kampusSpeed', v)} />
+
+        <TweakSection label="Branding" />
+        <TweakColor label="Warna primer" value={t.primaryColor} options={PRIMARY_OPTIONS}
+          onChange={(v) => setTweak('primaryColor', v)} />
+        <TweakColor label="Warna aksen" value={t.accentColor} options={ACCENT_OPTIONS}
+          onChange={(v) => setTweak('accentColor', v)} />
+
+        <TweakSection label="Hero" />
+        <TweakRadio label="Highlight" value={t.headlineHighlight}
+          options={['lime', 'underline', 'none']}
+          onChange={(v) => setTweak('headlineHighlight', v)} />
+        <TweakSelect label="Background" value={t.bgPattern}
+          options={[
+            { value: 'dots',  label: 'Dot pattern' },
+            { value: 'grid',  label: 'Grid pattern' },
+            { value: 'clean', label: 'Polos' }
+          ]}
+          onChange={(v) => setTweak('bgPattern', v)} />
+
+        <TweakSection label="Floating WA" />
+        <TweakToggle label="Tampilkan tombol melayang" value={t.showFloatWA}
+          onChange={(v) => setTweak('showFloatWA', v)} />
+        <TweakToggle label="Animasi pulse" value={t.pulseAnimation}
+          onChange={(v) => setTweak('pulseAnimation', v)} />
+      </TweaksPanel>
+    );
+  }
+
+  // wait a tick for tweaks-panel.jsx to define globals
+  function mount() {
+    if (typeof TweaksPanel === 'undefined' || typeof useTweaks === 'undefined') {
+      return setTimeout(mount, 30);
+    }
+    ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
+  }
+  mount();
+</script>
+
+</body>
+</html>

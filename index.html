@@ -39,7 +39,7 @@
     --max: 1180px;
 
     /* Tweakable */
-    --kampus-speed: 50s;
+    --kampus-speed: 90s;
   }
 
   * { box-sizing: border-box; }
@@ -101,6 +101,7 @@
     gap: 6px;
   }
   .logo .emo { font-size: 22px; }
+  .logo-img { height: 32px; width: auto; display: inline-block; vertical-align: middle; object-fit: contain; }
   .nav-menu {
     display: flex;
     gap: 32px;
@@ -1149,6 +1150,49 @@
     .kampus { padding: 56px 0; }
     .kampus-stats { gap: 28px; }
   }
+  @media (max-width: 480px) {
+    .hero-visual {
+      height: auto !important;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      padding: 4px 0 8px;
+      max-width: 320px;
+    }
+    .hv-blob { display: none; }
+    .hero-visual .hv-card {
+      position: static !important;
+      top: auto !important; left: auto !important;
+      right: auto !important; bottom: auto !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .hv-card-3 {
+      order: 1;
+      flex: 1 1 auto;
+      min-width: 120px;
+      text-align: center;
+      justify-content: center;
+    }
+    .hv-card-1 {
+      order: 2;
+      flex: 1 1 auto;
+      min-width: 110px;
+      text-align: center;
+    }
+    .hv-card-main {
+      order: 3;
+      width: 100% !important;
+      max-width: 320px;
+    }
+    .hv-card-2 {
+      order: 4;
+      width: 100%;
+      max-width: 320px;
+    }
+  }
 </style>
 </head>
 <body data-screen-label="JokiBoy Landing Page">
@@ -1156,7 +1200,7 @@
 <!-- ========== NAVBAR ========== -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
-    <a href="#top" class="logo" aria-label="JokiBoy"><span class="emo">📚</span> JokiBoy</a>
+    <a href="#top" class="logo" aria-label="JokiBoy"><img src="logo.png" alt="JokiBoy" class="logo-img"> JokiBoy</a>
     <div class="nav-menu">
       <a href="#layanan">Layanan</a>
       <a href="#testimoni">Testimoni</a>
@@ -1250,15 +1294,11 @@
           <div class="l">Kampus</div>
         </div>
         <div class="kampus-stat">
-          <div class="v">34</div>
-          <div class="l">Provinsi</div>
-        </div>
-        <div class="kampus-stat">
           <div class="v">8.000<span style="color:var(--primary)">+</span></div>
           <div class="l">Tugas selesai</div>
         </div>
         <div class="kampus-stat">
-          <div class="v">7 thn</div>
+          <div class="v">Sejak <span class="accent">2019</span></div>
           <div class="l">Pengalaman</div>
         </div>
       </div>
@@ -1410,7 +1450,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="logo">📚 JokiBoy</div>
+        <div class="logo"><img src="logo.png" alt="JokiBoy" class="logo-img"> JokiBoy</div>
         <p class="footer-tag">Tugas beres, nilai aman. 7 tahun dipercaya 8.000+ mahasiswa.</p>
       </div>
       <div>

@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/tugas", "destination": "/index.html" },
+    { "source": "/tugas/(.*)", "destination": "/$1" }
+  ]
+}

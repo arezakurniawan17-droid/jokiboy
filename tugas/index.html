@@ -1563,40 +1563,17 @@
 
   /* ---------- TESTIMONI ---------- */
   const testis = [
-    { type: 'wa', name: 'Rini A.', initial: 'R', time: 'Kemarin', msg: 'Makalahnya udah aku submit. Dosen ngasih nilai B+ 🙌 Makasih banyakk JokiBoy!' },
-    { type: 'tf', img: '../bukti/tf1.png' },
-    { type: 'wa', name: 'Dimas K.', initial: 'D', time: '2 hari lalu', msg: 'PPT-nya kerennn, presentasi lancar, dosen muji designnya 🔥 Order lagi pasti deh' },
-    { type: 'tf', img: '../bukti/tf2.png' },
-    { type: 'wa', name: 'Sari W.',  initial: 'S', time: '3 hari lalu', msg: 'Tugas metopen aku selesai 4 hari sesuai janji. Datanya rapi, analisisnya valid. Worth it bgt 💯' },
-    { type: 'tf', img: '../bukti/tf3.png' },
-    { type: 'wa', name: 'Fajar R.', initial: 'F', time: '5 hari lalu', msg: 'Ujian take home jam 9 deadline jam 23.59, daftarkan jam 14, selesai jam 19. Mantap responnya cepet bgt 🙏' },
-    { type: 'tf', img: '../bukti/tf4.png' },
-    { type: 'tf', img: '../bukti/tf5.png' },
-    { type: 'tf', img: '../bukti/tf6.png' },
-    { type: 'tf', img: '../bukti/tf7.png' },
-    { type: 'tf', img: '../bukti/tf8.png' },
-    { type: 'tf', img: '../bukti/tf9.png' }
+    '../bukti/tf1.png','../bukti/tf2.png','../bukti/tf3.png',
+    '../bukti/tf4.png','../bukti/tf5.png','../bukti/tf6.png',
+    '../bukti/tf7.png','../bukti/tf8.png','../bukti/tf9.png'
   ];
   const t = document.getElementById('testiTrack');
-  const renderTesti = (x) => x.type === 'wa' ? `
-    <div class="testi-card">
-      <div class="wa-head">
-        <div class="wa-avatar">${x.initial}</div>
-        <div>
-          <div class="wa-name">${x.name}</div>
-          <div class="wa-time">${x.time}</div>
-        </div>
-      </div>
-      <div class="wa-bubble in">Tugasnya sudah selesai ya kak, file kami kirim 📎</div>
-      <div class="wa-bubble">${x.msg} <span class="tick">✓✓</span></div>
-    </div>
-  ` : `
+  const renderTesti = (img) => `
     <div class="testi-card tf-card">
-      <img class="tf-img" src="${x.img}" alt="Bukti Transfer" loading="lazy">
+      <img class="tf-img" src="${img}" alt="Bukti Transfer" loading="lazy">
       <div class="tf-label">Bukti Transfer ✓</div>
     </div>
   `;
-  // duplicate for seamless scroll
   t.innerHTML = [...testis, ...testis].map(renderTesti).join('');
 
   /* ---------- KAMPUS DATA ---------- */

@@ -781,37 +781,21 @@
   /* TF card */
   .tf-card {
     text-align: center;
-    padding: 22px 18px;
+    padding: 10px 10px;
+    overflow: hidden;
   }
-  .tf-icon {
-    width: 56px; height: 56px;
-    margin: 0 auto 14px;
-    border-radius: 50%;
-    background: var(--accent);
-    display: grid; place-items: center;
-    font-size: 28px;
+  .tf-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
   }
   .tf-label {
     font-weight: 700; color: var(--black);
-    font-size: 15px;
-    margin-bottom: 6px;
+    font-size: 13px;
+    margin-top: 8px;
   }
-  .tf-amount {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--primary);
-    letter-spacing: -0.02em;
-    margin-bottom: 4px;
-    filter: blur(4px);
-    user-select: none;
-  }
-  .tf-amount.show { filter: none; }
-  .tf-meta {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 6px;
-  }
-  .tf-meta strong { color: var(--black); }
 
   /* =========================
      FAQ
@@ -1582,13 +1566,18 @@
   /* ---------- TESTIMONI ---------- */
   const testis = [
     { type: 'wa', name: 'Rini A.', initial: 'R', time: 'Kemarin', msg: 'Makalahnya udah aku submit. Dosen ngasih nilai B+ 🙌 Makasih banyakk JokiBoy!' },
-    { type: 'tf', label: 'Bukti Transfer ✓', amount: 'Rp 175.000', meta: 'BCA · 22 Mei 2026 · 14:32' },
+    { type: 'tf', img: 'bukti/tf1.png' },
     { type: 'wa', name: 'Dimas K.', initial: 'D', time: '2 hari lalu', msg: 'PPT-nya kerennn, presentasi lancar, dosen muji designnya 🔥 Order lagi pasti deh' },
-    { type: 'tf', label: 'Bukti Transfer ✓', amount: 'Rp 95.000',  meta: 'Dana · 21 Mei 2026 · 09:15' },
+    { type: 'tf', img: 'bukti/tf2.png' },
     { type: 'wa', name: 'Sari W.',  initial: 'S', time: '3 hari lalu', msg: 'Tugas metopen aku selesai 4 hari sesuai janji. Datanya rapi, analisisnya valid. Worth it bgt 💯' },
-    { type: 'tf', label: 'Bukti Transfer ✓', amount: 'Rp 320.000', meta: 'BSI · 19 Mei 2026 · 20:08' },
+    { type: 'tf', img: 'bukti/tf3.png' },
     { type: 'wa', name: 'Fajar R.', initial: 'F', time: '5 hari lalu', msg: 'Ujian take home jam 9 deadline jam 23.59, daftarkan jam 14, selesai jam 19. Mantap responnya cepet bgt 🙏' },
-    { type: 'tf', label: 'Bukti Transfer ✓', amount: 'Rp 250.000', meta: 'BCA · 17 Mei 2026 · 11:24' }
+    { type: 'tf', img: 'bukti/tf4.png' },
+    { type: 'tf', img: 'bukti/tf5.png' },
+    { type: 'tf', img: 'bukti/tf6.png' },
+    { type: 'tf', img: 'bukti/tf7.png' },
+    { type: 'tf', img: 'bukti/tf8.png' },
+    { type: 'tf', img: 'bukti/tf9.png' }
   ];
   const t = document.getElementById('testiTrack');
   const renderTesti = (x) => x.type === 'wa' ? `
@@ -1605,10 +1594,8 @@
     </div>
   ` : `
     <div class="testi-card tf-card">
-      <div class="tf-icon">💸</div>
-      <div class="tf-label">${x.label}</div>
-      <div class="tf-amount">${x.amount}</div>
-      <div class="tf-meta">${x.meta}</div>
+      <img class="tf-img" src="${x.img}" alt="Bukti Transfer" loading="lazy">
+      <div class="tf-label">Bukti Transfer ✓</div>
     </div>
   `;
   // duplicate for seamless scroll

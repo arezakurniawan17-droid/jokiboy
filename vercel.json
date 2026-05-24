@@ -1,6 +1,9 @@
 {
   "rewrites": [
-    { "source": "/tugas", "destination": "/index.html" },
-    { "source": "/tugas/(.*)", "destination": "/$1" }
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "tugas.jokiboy.com" }],
+      "destination": "/tugas/$1"
+    }
   ]
 }
